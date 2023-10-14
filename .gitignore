@@ -1,0 +1,8 @@
+*.crt
+*.key
+*.txt
+*.docx
+*.default
+base_test.js
+/node_modules/**/*
+/.vscode/**/*

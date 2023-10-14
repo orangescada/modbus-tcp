@@ -1,0 +1,30 @@
+{
+  "name": "modbustcp",
+  "version": "1.0.0",
+  "description": "ModbusTCP driver for OrangeScada",
+  "main": "driver.js",
+  "dependencies": {
+    "iconv-lite": "^0.6.0",
+    "ini": "^1.3.5",
+    "node-datetime": "^2.0.6",
+    "node-windows": "^0.1.14",
+    "nodejs-websocket": "^1.7.1",
+    "ws": "^6.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	  "start": "node driver.js",
+    "installService": "node toServiceDriver.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxmaxk/osAPIClientDriver.git"
+  },
+  "author": "OrangeScada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxmaxk/osAPIClientDriver/issues"
+  },
+  "homepage": "https://github.com/maxmaxk/osAPIClientDriver#readme"
+}
