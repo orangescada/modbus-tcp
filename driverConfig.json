@@ -50,7 +50,7 @@
         "name": "Modbus Var Type",
         "selectValues": {
           "Coil": "Coil",
-          "DiscreteInput": "Discrete Input",
+          "DescreateInput": "Discrete Input",
           "HoldingRegister": "Holding Register",
           "InputRegister": "Input Register"
         }
