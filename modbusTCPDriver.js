@@ -359,7 +359,7 @@ class CustomDriver{
         })
         .finally( _ => {
           let fullDeviceName = this.getFullDeviceAddress(tags);
-          delete this.clients[fullDeviceName][transID];
+          if (fullDeviceName && this.clients[fullDeviceName]) delete this.clients[fullDeviceName][transID];
         });
       }catch(err){
         reject(err.message);
