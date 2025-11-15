@@ -4,5 +4,6 @@
 *.docx
 *.default
 base_test.js
+driverConfig.json
 /node_modules/**/*
 /.vscode/**/*

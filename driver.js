@@ -46,10 +46,18 @@ path = require('path');
  */
 function getConfig(){
 	const root = path.dirname(require.main.filename);
-	const configJSON = fs.readFileSync(root+'/driverConfig.json', 'utf-8');
+	let configJSON = {}
+	let configRestore = false
+	if (!fs.existsSync(root+'/driverConfig.json')) {
+      configJSON = fs.readFileSync(root+'/driverConfig.default', 'utf-8');
+	  configRestore = true
+	} else {
+	  configJSON = fs.readFileSync(root+'/driverConfig.json', 'utf-8');
+	}
 	let config = null;
 	try{
 		config = JSON.parse(configJSON);
+		if (configRestore) setConfig(config)
 	}catch(e){
 		logger('Error JSON parse config file: ' + e);
 	}
@@ -61,7 +69,15 @@ function getConfig(){
  * @param {object} config - config object
  */
 function setConfig(config) {
-	let configJSON = JSON.stringify(config, null, 2);
+	const configDeepCopy = JSON.parse(JSON.stringify(config))
+	Object.values(configDeepCopy.devices).forEach(device => {
+	  if (device?.tags) {
+	    Object.values(device.tags).forEach(tag => {
+	  	  delete tag.subscribed
+	    })
+	  }
+	})
+	let configJSON = JSON.stringify(configDeepCopy, null, 2);
 	const root = path.dirname(require.main.filename);
 	try{
 		fs.writeFileSync(root+'/driverConfig.json', configJSON, {encoding: "utf8"});
